@@ -7,6 +7,31 @@ jobs:
    my-job:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v3
+        - run: |
+               echo "This job is running on a ${{runner.os}} server hosted by github"
+               echo "The current branch is: ${{github.ref}}"
+               echo "The current repo is: ${{github.repository}}"
+
+        #checkout code 
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        
+
+        #check if all files are here
         - name: running the test
           run: ls -la
+
+        # setup node version  
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 'lts/*' # Use the latest LTS version of Node.js
+
+        # check node current version
+        - name: check node current version
+          run: node -v
+
+        # running tests
+        - name: Run tests
+          run: npm run test
+        

@@ -25,7 +25,7 @@ jobs:
         # setup node version  
         - uses: actions/setup-node@v4
           with:
-            node-version: 'lts/*' # Use the latest LTS version of Node.js
+            node-version: '23.4.0' # Use the latest LTS version of Node.js
 
         # check node current version
         - name: check node current version
